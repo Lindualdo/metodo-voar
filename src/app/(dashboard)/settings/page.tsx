@@ -23,7 +23,6 @@ export default function SettingsPage() {
 
   return (
     <div className="space-y-8">
-      {/* Page Header */}
       <div>
         <h1 className="text-3xl font-bold text-foreground">Configurações</h1>
         <p className="text-muted-foreground mt-2">
@@ -32,7 +31,6 @@ export default function SettingsPage() {
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
-        {/* Profile Section */}
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -79,9 +77,7 @@ export default function SettingsPage() {
           </CardContent>
         </Card>
 
-        {/* Settings */}
         <div className="lg:col-span-2 space-y-6">
-          {/* Theme Settings */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -135,7 +131,6 @@ export default function SettingsPage() {
             </CardContent>
           </Card>
 
-          {/* Notifications */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -151,6 +146,85 @@ export default function SettingsPage() {
                     <p className="text-sm text-muted-foreground">Receba resumos semanais</p>
                   </div>
                   <div className="w-12 h-6 bg-voar-primary rounded-full relative cursor-pointer">
+                    <div className="w-5 h-5 bg-white rounded-full absolute top-0.5 right-0.5 shadow-sm"></div>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="font-medium">Lembretes diários</h4>
+                    <p className="text-sm text-muted-foreground">Lembrete para fazer registros</p>
+                  </div>
+                  <div className="w-12 h-6 bg-muted rounded-full relative cursor-pointer">
+                    <div className="w-5 h-5 bg-white rounded-full absolute top-0.5 left-0.5 shadow-sm"></div>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="font-medium">Insights novos</h4>
+                    <p className="text-sm text-muted-foreground">Quando novos padrões forem identificados</p>
+                  </div>
+                  <div className="w-12 h-6 bg-voar-primary rounded-full relative cursor-pointer">
+                    <div className="w-5 h-5 bg-white rounded-full absolute top-0.5 right-0.5 shadow-sm"></div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Mic className="w-5 h-5" />
+                Configurações de Áudio
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-medium mb-2">Qualidade de gravação</h4>
+                  <div className="grid grid-cols-3 gap-2">
+                    <button className="p-2 text-sm rounded border border-muted hover:border-muted-foreground">
+                      Baixa
+                    </button>
+                    <button className="p-2 text-sm rounded border-2 border-voar-primary bg-voar-primary/10">
+                      Média
+                    </button>
+                    <button className="p-2 text-sm rounded border border-muted hover:border-muted-foreground">
+                      Alta
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="font-medium">Transcrição automática</h4>
+                    <p className="text-sm text-muted-foreground">Processar áudios automaticamente</p>
+                  </div>
+                  <div className="w-12 h-6 bg-voar-primary rounded-full relative cursor-pointer">
+                    <div className="w-5 h-5 bg-white rounded-full absolute top-0.5 right-0.5 shadow-sm"></div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Shield className="w-5 h-5" />
+                Privacidade
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="font-medium">Compartilhar análises</h4>
+                    <p className="text-sm text-muted-foreground">Para melhorar o sistema</p>
+                  </div>
+                  <div className="w-12 h-6 bg-muted rounded-full relative cursor-pointer">
                     <div className="w-5 h-5 bg-white rounded-full absolute top-0.5 left-0.5 shadow-sm"></div>
                   </div>
                 </div>
@@ -168,7 +242,6 @@ export default function SettingsPage() {
             </CardContent>
           </Card>
 
-          {/* WhatsApp Integration */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -196,9 +269,8 @@ export default function SettingsPage() {
             </CardContent>
           </Card>
 
-          {/* Save Button */}
           <div className="flex justify-end">
-            <Button variant="voar" className="w-full sm:w-auto">
+            <Button variant="default" className="w-full sm:w-auto">
               <Save className="w-4 h-4 mr-2" />
               Salvar Alterações
             </Button>
@@ -206,7 +278,6 @@ export default function SettingsPage() {
         </div>
       </div>
 
-      {/* Danger Zone */}
       <Card className="border-red-200 dark:border-red-800">
         <CardHeader>
           <CardTitle className="text-red-600 dark:text-red-400">
@@ -245,85 +316,4 @@ export default function SettingsPage() {
       </Card>
     </div>
   );
-} className="w-5 h-5 bg-white rounded-full absolute top-0.5 right-0.5 shadow-sm"></div>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="font-medium">Lembretes diários</h4>
-                    <p className="text-sm text-muted-foreground">Lembrete para fazer registros</p>
-                  </div>
-                  <div className="w-12 h-6 bg-muted rounded-full relative cursor-pointer">
-                    <div className="w-5 h-5 bg-white rounded-full absolute top-0.5 left-0.5 shadow-sm"></div>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="font-medium">Insights novos</h4>
-                    <p className="text-sm text-muted-foreground">Quando novos padrões forem identificados</p>
-                  </div>
-                  <div className="w-12 h-6 bg-voar-primary rounded-full relative cursor-pointer">
-                    <div className="w-5 h-5 bg-white rounded-full absolute top-0.5 right-0.5 shadow-sm"></div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Audio Settings */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Mic className="w-5 h-5" />
-                Configurações de Áudio
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-medium mb-2">Qualidade de gravação</h4>
-                  <div className="grid grid-cols-3 gap-2">
-                    <button className="p-2 text-sm rounded border border-muted hover:border-muted-foreground">
-                      Baixa
-                    </button>
-                    <button className="p-2 text-sm rounded border-2 border-voar-primary bg-voar-primary/10">
-                      Média
-                    </button>
-                    <button className="p-2 text-sm rounded border border-muted hover:border-muted-foreground">
-                      Alta
-                    </button>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="font-medium">Transcrição automática</h4>
-                    <p className="text-sm text-muted-foreground">Processar áudios automaticamente</p>
-                  </div>
-                  <div className="w-12 h-6 bg-voar-primary rounded-full relative cursor-pointer">
-                    <div className="w-5 h-5 bg-white rounded-full absolute top-0.5 right-0.5 shadow-sm"></div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Privacy */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Shield className="w-5 h-5" />
-                Privacidade
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="font-medium">Compartilhar análises</h4>
-                    <p className="text-sm text-muted-foreground">Para melhorar o sistema</p>
-                  </div>
-                  <div className="w-12 h-6 bg-muted rounded-full relative cursor-pointer">
-                    <div
+}
