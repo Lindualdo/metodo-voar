@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 0 0% 98%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -12,16 +12,16 @@
     --popover-foreground: 222.2 84% 4.9%;
     --primary: 262.1 83.3% 57.8%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
+    --secondary: 210 40% 94%;
     --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
+    --muted: 210 40% 92%;
+    --muted-foreground: 215.4 16.3% 40%;
+    --accent: 210 40% 94%;
     --accent-foreground: 222.2 84% 4.9%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+    --border: 214.3 31.8% 88%;
+    --input: 214.3 31.8% 88%;
     --ring: 262.1 83.3% 57.8%;
     --radius: 0.75rem;
   }
@@ -81,11 +81,43 @@
   
   /* Glassmorphism effect */
   .glass {
-    @apply bg-white/10 backdrop-blur-md border border-white/20;
+    @apply bg-white/20 backdrop-blur-md border border-white/30;
   }
   
   .glass.dark {
-    @apply bg-black/10 border-white/10;
+    @apply bg-black/20 border-white/10;
+  }
+
+  /* Enhanced card styling for better contrast */
+  .card-enhanced {
+    @apply bg-card border border-border shadow-sm;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+
+  .dark .card-enhanced {
+    box-shadow: 0 1px 3px 0 rgb(255 255 255 / 0.05), 0 1px 2px -1px rgb(255 255 255 / 0.05);
+  }
+
+  /* Sidebar enhanced contrast */
+  .sidebar-item {
+    @apply transition-all duration-200;
+  }
+
+  .sidebar-item:hover {
+    @apply bg-muted/70 shadow-sm;
+  }
+
+  .sidebar-item.active {
+    @apply bg-voar-primary text-white shadow-md;
+  }
+
+  /* Button enhancements */
+  .btn-enhanced {
+    @apply shadow-sm border-border/50;
+  }
+
+  .btn-enhanced:hover {
+    @apply shadow-md border-border;
   }
   
   /* Audio wave animation */
