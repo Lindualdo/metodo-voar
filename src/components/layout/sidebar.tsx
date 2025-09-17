@@ -15,7 +15,15 @@ import {
   Plane 
 } from 'lucide-react';
 
-const navigation = [
+interface NavigationItem {
+  title: string;
+  href: string;
+  icon: any;
+  badge?: number;
+  disabled?: boolean;
+}
+
+const navigation: NavigationItem[] = [
   {
     title: 'Dashboard',
     href: '/dashboard',
@@ -92,34 +100,20 @@ export function Sidebar({ className }: SidebarProps) {
               const isActive = pathname === item.href;
               
               if (item.disabled) {
-              
-              return (
-                <div
-                  key={item.href}
-                  className={cn(
-                    "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-                    item.disabled 
-                      ? "text-muted-foreground/50 cursor-not-allowed opacity-50" 
-                      : isActive 
-                        ? "bg-voar-primary text-white" 
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                  )}
-                >
-                  <Icon className="w-4 h-4" />
-                  <span className="flex-1">{item.title}</span>
-                  {item.badge && !item.disabled && (
-                    <Badge variant="secondary" className="h-5 text-xs">
-                      {item.badge}
-                    </Badge>
-                  )}
-                  {item.disabled && (
+                return (
+                  <div
+                    key={item.href}
+                    className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground/50 cursor-not-allowed opacity-50"
+                  >
+                    <Icon className="w-4 h-4" />
+                    <span className="flex-1">{item.title}</span>
                     <Badge variant="outline" className="h-5 text-xs">
                       Em breve
                     </Badge>
-                  )}
-                </div>
-              );
-            } else {
+                  </div>
+                );
+              }
+              
               return (
                 <Link
                   key={item.href}
@@ -140,7 +134,6 @@ export function Sidebar({ className }: SidebarProps) {
                   )}
                 </Link>
               );
-            }
             })}
           </div>
         </div>

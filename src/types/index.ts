@@ -195,3 +195,12 @@ export interface AudioPlayerControls {
   setVolume: (volume: number) => void;
   setPlaybackRate: (rate: number) => void;
 }
+
+// Adicione esta interface na seção de Navigation types
+export interface NavItem {
+  title: string;
+  href: string;
+  icon: string;
+  badge?: number;
+  disabled?: boolean; // <- Adicionar esta linha
+}
