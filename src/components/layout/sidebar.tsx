@@ -5,14 +5,18 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { 
-  LayoutDashboard, 
-  Mic, 
-  BarChart3, 
-  Target, 
-  FileText, 
-  Settings, 
-  Plane 
+import { Button } from '@/components/ui/button';
+import { useAuthStore } from '@/stores/auth';
+import { signOut } from 'next-auth/react';
+import {
+  LayoutDashboard,
+  Mic,
+  BarChart3,
+  Target,
+  FileText,
+  Settings,
+  Plane,
+  LogOut
 } from 'lucide-react';
 
 interface NavigationItem {
@@ -72,6 +76,23 @@ interface SidebarProps {
 
 export function Sidebar({ className }: SidebarProps) {
   const pathname = usePathname();
+  const { user } = useAuthStore();
+
+  const handleLogout = async () => {
+    await signOut({
+      callbackUrl: '/',
+    });
+  };
+
+  const getUserInitials = (name?: string) => {
+    if (!name) return 'US';
+    return name
+      .split(' ')
+      .map((word) => word[0])
+      .join('')
+      .toUpperCase()
+      .slice(0, 2);
+  };
 
   return (
     <div className={cn(
@@ -168,15 +189,26 @@ export function Sidebar({ className }: SidebarProps) {
         <div className="px-3 py-2 mt-auto">
           <div className="flex items-center gap-3 px-3 py-2 rounded-lg bg-muted/50">
             <Avatar className="w-8 h-8">
-              <AvatarImage src="/placeholder-avatar.jpg" />
+              <AvatarImage src={user?.avatar} />
               <AvatarFallback className="bg-voar-primary text-white">
-                JD
+                {getUserInitials(user?.name)}
               </AvatarFallback>
             </Avatar>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-foreground">João Silva</p>
+              <p className="text-sm font-medium text-foreground">
+                {user?.name || 'Usuário'}
+              </p>
               <p className="text-xs text-muted-foreground">Premium</p>
             </div>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={handleLogout}
+              className="h-8 w-8 text-muted-foreground hover:text-foreground"
+              title="Sair"
+            >
+              <LogOut className="w-4 h-4" />
+            </Button>
           </div>
         </div>
       </div>

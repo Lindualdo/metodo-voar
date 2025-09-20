@@ -3,9 +3,11 @@
 import { Sidebar } from '@/components/layout/sidebar';
 import { Button } from '@/components/ui/button';
 import { useTheme } from '@/components/theme-provider';
-import { Menu, Sun, Moon, Bell } from 'lucide-react';
+import { useAuthStore } from '@/stores/auth';
+import { Menu, Sun, Moon, Bell, LogOut } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
+import { signOut } from 'next-auth/react';
 
 export default function DashboardLayout({
   children,
@@ -14,6 +16,13 @@ export default function DashboardLayout({
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const { user } = useAuthStore();
+
+  const handleLogout = async () => {
+    await signOut({
+      callbackUrl: '/',
+    });
+  };
 
   return (
     <div className="h-screen flex bg-background">
@@ -73,6 +82,15 @@ export default function DashboardLayout({
               <Button variant="ghost" size="icon">
                 <Bell className="w-5 h-5" />
               </Button>
+
+              {/* User Welcome */}
+              {user && (
+                <div className="hidden md:flex items-center gap-2 px-3 py-1 bg-muted/50 rounded-full">
+                  <span className="text-xs text-muted-foreground">
+                    Olá, {user.name?.split(' ')[0]}
+                  </span>
+                </div>
+              )}
 
               {/* WhatsApp Status */}
               <div className="hidden md:flex items-center gap-2 px-3 py-1 bg-green-100 dark:bg-green-900/20 rounded-full">
